@@ -11,7 +11,28 @@ import android.view.MenuItem;
 public class LaunchComics extends Activity {
 
 
-    public static String[] urls = new String[] {"",""};
+    public static String[] urls = new String[] {
+            "xkcd.com",
+            "wigucomics.com/index.php",
+            "wapsisquare.com",
+            "questionablecontent.net",
+            "pvponline.com",
+            "smbc-comics.com",
+            "penny-arcade.com",
+            "menagea3.net",
+            "hijinksensue.com",
+            "dieselsweeties.com",
+            "cad-comic.com",
+            "amazingsuperpowers.com",
+            "trenchescomic.com",
+            "overcompensating.com",
+            "tabletitans.com/comic/",
+            "campcomic.com",
+            "alicegrove.com",
+            "tumbledrycomics.com",
+            "poorlydrawnlines.com",
+
+    };
 
 
     @Override
@@ -19,13 +40,9 @@ public class LaunchComics extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch_comics);
 
-
         for(String url : urls) {
             openUrl(url);
         }
-
-
-
         finish();
     }
 
