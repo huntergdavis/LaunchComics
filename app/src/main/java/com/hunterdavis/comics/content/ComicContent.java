@@ -1,8 +1,10 @@
 package com.hunterdavis.comics.content;
 
+import android.util.Log;
 import android.webkit.WebView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +64,15 @@ public class ComicContent {
             this.content = content;
             this.days = days;
             this.name = name;
+        }
+
+        public boolean doesComicComeOutToday() {
+            Calendar calendar = Calendar.getInstance();
+
+            // day is 1 indexed, but we're zero indexed
+            int day = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+
+            return days.daysOfWeek[day];
         }
 
         @Override

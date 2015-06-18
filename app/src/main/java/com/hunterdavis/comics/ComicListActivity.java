@@ -69,13 +69,10 @@ public class ComicListActivity extends FragmentActivity
         // pre-load all of our web URLS here
         // this is going to be pretty memory intensive!
         // optimize this by only loading comics for the right day (today)
-        Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
-
         int i = 0;
         for (ComicContent.ComicWebsiteItem comic : ComicContent.ITEMS) {
             // only pre-load comics for today day of week!
-            if(comic.days.daysOfWeek[day] == true) {
+            if(comic.doesComicComeOutToday() == true) {
                 webViews[i] = new WebView(this);
                 webViews[i].setWebViewClient(ourClient);
                 webViews[i].loadUrl(comic.content);

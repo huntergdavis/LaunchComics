@@ -2,11 +2,14 @@ package com.hunterdavis.comics;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import com.hunterdavis.comics.content.ComicContent;
@@ -71,7 +74,7 @@ public class ComicListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         setListAdapter(new ComicsArrayAdapter(getActivity()));
     }
 
@@ -155,6 +158,20 @@ public class ComicListFragment extends ListFragment {
                     ComicContent.ITEMS);
         }
 
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView textView = (TextView) super.getView(position, convertView, parent);
 
+            ComicContent.ComicWebsiteItem item  = getItem(position);
+            if(item != null) {
+                if(item.doesComicComeOutToday()) {
+                    textView.setTextColor(Color.BLUE);
+                }else {
+                    textView.setTextColor(Color.RED);
+                }
+            }
+
+            return textView;
+        }
     }
 }
