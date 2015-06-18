@@ -1,6 +1,7 @@
 package com.hunterdavis.comics;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
@@ -70,13 +71,8 @@ public class ComicListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // TODO: replace with a real list adapter.
-        setListAdapter(new ArrayAdapter<ComicContent.ComicWebsiteItem>(
-                getActivity(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                ComicContent.ITEMS));
+        
+        setListAdapter(new ComicsArrayAdapter(getActivity()));
     }
 
     @Override
@@ -148,5 +144,17 @@ public class ComicListFragment extends ListFragment {
         }
 
         mActivatedPosition = position;
+    }
+
+    private class ComicsArrayAdapter extends ArrayAdapter<ComicContent.ComicWebsiteItem> {
+
+        public ComicsArrayAdapter(Context context) {
+            super(context,
+                    android.R.layout.simple_list_item_activated_1,
+                    android.R.id.text1,
+                    ComicContent.ITEMS);
+        }
+
+
     }
 }
